@@ -5,8 +5,13 @@ import os
 data = os.getenv('data')
 
 def get_GNI(df):
-    # Takes a dataframe where the columns are country names and the rows are dates
-    # Returns GNI in current US dollars from the WDI
+    '''Takes a dataframe where the columns are country names and the rows are dates. 
+    Returns population from the WDI.
+
+    Parameters
+    ----------
+
+    df: a Pandas dataframe'''
     countries = df.columns
     date_tuple = df.index.min(),df.index.max()
 
@@ -19,8 +24,13 @@ def get_GNI(df):
     return(result)
 
 def get_pop(df):
-    # Takes a dataframe where the columns are country names and the rows are dates
-    # Returns population from the WDI
+    '''Takes a dataframe where the columns are country names and the rows are dates. 
+    Returns population from the WDI.
+
+    Parameters
+    ----------
+
+    df: a Pandas dataframe'''
     countries = df.columns
     date_tuple = df.index.min(),df.index.max()
 
