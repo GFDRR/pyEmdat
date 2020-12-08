@@ -10,9 +10,6 @@ pyEmdat is a library for analysis of the EM-DAT natural disasters dataset. It al
 
 * Combine with population and GNI data (via World Development Indicators API)
 
-## Documentation
-Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/latest/
-
 ## Background: EM-DAT data
 EM-DAT is a global database of natural disaster events and impacts maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at Université catholique de Louvain. It is used widely to inform policy-making on disaster risk management: for example, it helps policymakers identify the disaster types that are most common in a given country and that have had significant historical impacts on human populations.
 
@@ -44,3 +41,10 @@ plt.title('Pakistan: total USD damages by hazard type (1980-2020)');
 Output:
 
 ![damage pie chart](/docs/damage_pie.png)
+
+## Documentation
+Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/latest/
+
+## Functionality to add
+* Merge with country polygons to make choropleth maps
+* Possible additional data structure for Desinventar data
