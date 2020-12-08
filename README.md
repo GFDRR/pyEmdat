@@ -32,3 +32,14 @@ Fourth, use the built-in `utils` to compare natural disaster impacts with popula
 
 ## Examples
 See example notebooks for usage.
+
+## Quick example
+
+```python
+result = ED.disaster_stats_entire_period(1980, 2020, countries = 'Pakistan', disastertype = 'all', stats = ['total_damages'])
+result.head().plot(kind = 'pie', y='total_damages', figsize =[4,4])
+plt.title('Pakistan: total USD damages by hazard type (1980-2020)');
+```
+
+![damage pie chart]
+(https://github.com/GFDRR/pyEmdat/raw/master/docs/damage_pie.png)
