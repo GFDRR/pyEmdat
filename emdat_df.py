@@ -105,8 +105,9 @@ class emdat():
             df = df[df['disaster_type'].isin(disastertype)]
 
         result = df.groupby(['disaster_type'])[stats].sum()[stats]
-        result = result.unstack().fillna(0)
-            
+        result = result.fillna(0)[stats]
+        result = result.sort_values(by = stats, ascending = False)
+
         return(result)
 
     def disaster_stats_timeseries(self, min_year, max_year, countries, disastertype, stats):
