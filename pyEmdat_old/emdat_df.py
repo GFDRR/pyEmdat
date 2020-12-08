@@ -2,8 +2,19 @@ import pandas as pd
 import wbdata
 
 class emdat():
+    '''A class used to load, clean and manipulate EMDAT data. 
 
-    def __init__(self,fn):
+    Args:
+        filename (str) : the path to the Excel file to load.
+
+    Attributes:
+        data (pd.DataFrame) : returns the EMDAT data in df format.
+        countries (list) : the unique set of countries contained in the data.
+        hazard_types (list) : the unique set of hazard types contained in the data.
+        n_events (int) : the number of individual events contained in the data.
+    '''
+
+    def __init__(self,filename):
 
         cols_dict = {"Year":"year",
         "Country":"country",
@@ -22,24 +33,25 @@ class emdat():
              "Insured Damages ('000 US$)":"insured_damages",
              "Total Damages ('000 US$)":"total_damages"}
 
-        self.df = pd.read_excel(fn, header = 6, parse_dates=['Year']).rename(columns = cols_dict)
-        print('squawk')
+        self.data = pd.read_excel(fn, header = 6, parse_dates=['Year']).rename(columns = cols_dict)
+        self.countries = self.data.unique()
+        self.disaster_types = self.disaster_type.unique()
+        self.n_events = self.dis_no.nunique()
         
-    def filter_years(self, min_year, max_year):
-        df = self.df
-        return df[(df.year > str(min_year)) & (df.year < str(max_year))]
-    
-    def filter_countries(self, countries):
-        df = self.df
-
-        return df[df.index.isin(countries)]
-    
-    def filter_disastertype(self, disastertype):
-        df = self.df
-        return df[df['disaster_type'].isin(disastertype)]
-    
     def disaster_count_timeseries(self, min_year, max_year, countries, disastertype):
-        df = self.df
+        '''
+        Returns an annual time series of the number of disaster per year for selected time period, countries and disaster type.
+
+        Args:
+            min_year (int) : start year
+            max_year (int) : end year
+            countries (list) : countries using EMDAT's unique country names
+            disastertype (list) : disaster type using EMDAT's disaster type categorization
+
+        Returns
+            pd.Series : annual time series of disaster count
+        '''
+        df = self.data
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
 
@@ -62,8 +74,20 @@ class emdat():
         return(result)
     
     def disaster_stats_df(self, min_year, max_year, countries, disastertype, stats):
-        '''stats: deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages'''
-        df = self.df
+        '''
+        EMDAT summary grouped by disaster type.
+
+        Args:
+            min_year (int) : start year
+            max_year (int) : end year
+            countries (list) : countries using EMDAT's unique country names
+            disastertype (list) : disaster type using EMDAT's disaster type categorization
+            stats (list) : statistic to use (``deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages``)
+
+        Returns
+            pd.Series : annual time series of disaster count
+        '''
+        df = self.data
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
 
@@ -86,8 +110,20 @@ class emdat():
         return(result)
 
     def disaster_stats_series(self, min_year, max_year, countries, disastertype, stats):
-        '''stats: deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages'''
-        df = self.df
+        '''
+        EMDAT summary grouped by disaster type.
+
+        Args:
+            min_year (int) : start year
+            max_year (int) : end year
+            countries (list) : countries using EMDAT's unique country names
+            disastertype (list) : disaster type using EMDAT's disaster type categorization
+            stats (list) : statistic to use (``deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages``)
+
+        Returns
+            pd.Series : annual time series of disaster count
+        '''
+        df = self.data
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
 
@@ -109,8 +145,20 @@ class emdat():
         return(result)
 
     def country_stats_timeseries(self, min_year, max_year, countries, disastertype, stats):
-        '''stats: deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages'''
-        df = self.df
+        '''
+        EMDAT summary grouped by country.
+
+        Args:
+            min_year (int) : start year
+            max_year (int) : end year
+            countries (list) : countries using EMDAT's unique country names
+            disastertype (list) : disaster type using EMDAT's disaster type categorization
+            stats (list) : statistic to use (``deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages``)
+
+        Returns
+            pd.DataFrame : annual time series of disaster count
+        '''
+        df = self.data
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
 
@@ -133,8 +181,20 @@ class emdat():
         return(result)
 
     def disaster_stats_timeseries(self, min_year, max_year, countries, disastertype, stats):
-        '''stats: deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages'''
-        df = self.df
+        '''
+        EMDAT summary grouped by disaster type.
+
+        Args:
+            min_year (int) : start year
+            max_year (int) : end year
+            countries (list) : countries using EMDAT's unique country names
+            disastertype (list) : disaster type using EMDAT's disaster type categorization
+            stats (list) : statistic to use (``deaths, injured, affected, total_affected, homeless, reconstruction_costs, insured_damages, total_damages``)
+
+        Returns
+            pd.Series : annual time series of disaster count
+        '''
+        df = self.data
 
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
@@ -158,7 +218,7 @@ class emdat():
         return(result)
 
     def disaster_stats_total_for_period(self, min_year, max_year, countries, disastertype, stats):
-        df = self.df
+        df = self.data
 
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
@@ -178,6 +238,19 @@ class emdat():
             df = df[df['disaster_type'].isin(disastertype)]
 
         return(df[stats].sum()[0])
+
+    def filter_years(self, min_year, max_year):
+        df = self.data
+        return df[(df.year > str(min_year)) & (df.year < str(max_year))]
+    
+    def filter_countries(self, countries):
+        df = self.data
+
+        return df[df.index.isin(countries)]
+    
+    def filter_disastertype(self, disastertype):
+        df = self.data
+        return df[df['disaster_type'].isin(disastertype)]
 
 
 
