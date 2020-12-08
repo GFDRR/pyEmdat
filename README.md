@@ -13,7 +13,7 @@ pyEmdat is a library for analysis of the EM-DAT natural disasters dataset. It al
 ## Background: EM-DAT data
 EM-DAT is a global database of natural disaster events and impacts maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at Université catholique de Louvain. It is used widely to inform policy-making on disaster risk management: for example, it helps policymakers identify the disaster types that are most common in a given country and that have had significant historical impacts on human populations.
 
-Researchers can access EM-DAT through CRED's website: http://public.emdat.be. The data can be downloaded by researchers in Excel format (having created an account and agreed to applicable conditions).
+Researchers can access EM-DAT through CRED's website: http://public.emdat.be. The data can be downloaded by researchers in Excel format (having created an account and agreed to applicable conditions). pyEmdat makes analysis easier as researchers were rewriting the required functionality each time or using Excel.
 
 ## Getting started
 First, download EM-DAT data which comes in Excel format. Abide by all terms and conditions of CRED including downloading only the data you need.
