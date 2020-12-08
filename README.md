@@ -10,8 +10,6 @@ pyEmdat is a library for analysis of the EM-DAT natural disasters dataset. It al
 
 * Combine with population and GNI data (via World Development Indicators API)
 
-* Create choropleth maps.
-
 ## Documentation
 Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/latest/
 
