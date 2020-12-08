@@ -41,5 +41,6 @@ result.head().plot(kind = 'pie', y='total_damages', figsize =[4,4])
 plt.title('Pakistan: total USD damages by hazard type (1980-2020)');
 ```
 
-![damage pie chart]
-(https://github.com/GFDRR/pyEmdat/raw/master/docs/damage_pie.png)
+![damage pie chart](https://github.com/GFDRR/pyEmdat/raw/master/docs/damage_pie.png)
+
+![damage pie chart](/docs/damage_pie.png)
