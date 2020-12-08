@@ -18,7 +18,7 @@ Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/lat
 ## Background: EM-DAT data
 EM-DAT is a global database of natural disaster events and impacts maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at Université catholique de Louvain. It is used widely to inform policy-making on disaster risk management: for example, it helps policymakers identify the disaster types that are most common in a given country and that have had significant historical impacts on human populations.
 
-Researchers can access EM-DAT through CRED's website: http://public.emdat.be. The data can be downloaded by researchers (having created an account and agreed to applicable conditions). It comes in Excel format. pyEmdat provides a data structure and functions to efficiently load, clean and analyze EM-DAT data.
+Researchers can access EM-DAT through CRED's website: http://public.emdat.be. The data can be downloaded by researchers in Excel format (having created an account and agreed to applicable conditions).
 
 ## Getting started
 First, download EM-DAT data which comes in Excel format. Abide by all terms and conditions of CRED including downloading only the data you need.
@@ -31,9 +31,11 @@ Third, use `emdat`'s built-in methods to filter, group and aggregate the data.
 Fourth, use the built-in `utils` to compare natural disaster impacts with population and GNI data from World Development Indicators.
 
 ## Examples
-See example notebooks for usage.
+See example notebook for usage.
 
 ## Quick example
+
+Load EM-DAT data as above, then:
 
 ```python
 result = ED.disaster_stats_entire_period(1980, 2020, countries = 'Pakistan', disastertype = 'all', stats = ['total_damages'])
@@ -41,6 +43,6 @@ result.head().plot(kind = 'pie', y='total_damages', figsize =[4,4])
 plt.title('Pakistan: total USD damages by hazard type (1980-2020)');
 ```
 
-![damage pie chart](https://github.com/GFDRR/pyEmdat/raw/master/docs/damage_pie.png)
+Output:
 
 ![damage pie chart](/docs/damage_pie.png)
