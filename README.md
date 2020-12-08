@@ -18,7 +18,7 @@ Researchers can access EM-DAT through CRED's website: http://public.emdat.be. Th
 ## Getting started
 First, download EM-DAT data which comes in Excel format. Abide by all terms and conditions of CRED including downloading only the data you need.
 Second, create an ``emdat`` object
-```
+```python
 from emdat_df import emdat
 ED = emdat('home/data/my_EMDAT_download.xlsx')
 ```
