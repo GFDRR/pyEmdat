@@ -37,8 +37,6 @@ df = ED.disaster_count_timeseries(1960, 2000, countries = 'all', disastertype = 
 df.plot(title = 'World: Number of events by year');
 ```
 
-Output:
-
 ![world number of events](/docs/world_events.png)
 
 ```python
@@ -46,9 +44,7 @@ df = ED.country_stats_timeseries(1980, 2020, ['Georgia','Armenia','Azerbaijan'],
 df.plot.area(title = "South Caucasus: Total damages 1980 - present (all hazards, current USD '000)");
 ```
 
-Output:
-
-![damage South Caucasus](/docs/damage_caucasus.png)
+![damage South Caucasus](/docs/stats_caucasus.png)
 
 ## Documentation
 Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/latest/
