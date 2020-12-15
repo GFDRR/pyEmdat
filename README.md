@@ -28,23 +28,33 @@ Fourth, use the built-in `utils` to compare natural disaster impacts with popula
 ## Examples
 See example notebook for usage.
 
-## Quick example
+## Quick examples
 
 Load EM-DAT data as above, then:
 
 ```python
-result = ED.disaster_stats_entire_period(1980, 2020, countries = 'Pakistan', disastertype = 'all', stats = ['total_damages'])
-result.head().plot(kind = 'pie', y='total_damages', figsize =[4,4])
-plt.title('Pakistan: total USD damages by hazard type (1980-2020)');
+df = ED.disaster_count_timeseries(1960, 2000, countries = 'all', disastertype = ['Storm','Flood', 'Earthquake','Volcanic activity','Landslide'])
+df.plot(title = 'World: Number of events by year');
 ```
 
 Output:
 
-![damage pie chart](/docs/damage_pie.png)
+![world number of events](/docs/world_events.png)
+
+```python
+df = ED.country_stats_timeseries(1980, 2020, ['Georgia','Armenia','Azerbaijan'],'all','total_damages')
+df.plot.area(title = "South Caucasus: Total damages 1980 - present (all hazards, current USD '000)");
+```
+
+Output:
+
+![damage South Caucasus](/docs/damage_caucasus.png)
 
 ## Documentation
 Documentation for pyEmdat is available at: https://pyemdat.readthedocs.io/en/latest/
 
 ## Functionality to add
 * Merge with country polygons to make choropleth maps
+* Damage stats in real 2010 USD
+* Annual average loss for selected countries/hazards/period (real 2010 USD)
 * Possible additional data structure for Desinventar data
