@@ -1,0 +1,26 @@
+,year,location,total_damages,deaths
+1,1967,buenos aires suburbs,3000.0,56.0
+7,1980,buenos aires province,,31.0
+12,1985,buenos aires,1300000.0,12.0
+14,1987,northwest buenos aires province,,
+15,1988,buenos aires province,490000.0,25.0
+16,1990,buenos aires,,21.0
+17,1992,"minas, cruz del eje, san justo, punilla, rio seco (cordoba province), chaco, corrientes, santa fe, buenos aires provinces",250000.0,45.0
+18,1992,"formosa, misiones, corrientes, chaco, sante fe, entre rios, buenos aires provinces",260000.0,
+19,1993,"junin, general viamonte, castelli, general pinto, las flores, general belgrano, chascomas, 25 de mayo, roque perez, general villegas (buenos aires province)",400000.0,
+20,1993,buenos aires province,600000.0,
+27,2000,"avellaneda, berisso, lanus, quilmes, san fernando, san miguel districts (buenos aires province), rosario district (santa fe province), parana city (entre rios province); buenos aires city (buenos aires d.f. province), la pampa, la cordoba provinces",,4.0
+28,2000,"buenos aires, cordoba, lapampa, santa fe provinces",300000.0,
+30,2001,"buenos aires, cordoba, la pampa, santa fe provinces",750000.0,1.0
+31,2001,buenos aires province,,
+33,2002,"buenos aires, sante fe provinces",,4.0
+34,2002,"buenos aires, chubut, entre rios, rio negro, santa fe provinces",,4.0
+35,2003,"belgrano (comuna 13 district, buenos aires d.f. province), palermo (comuna 14 district, buenos aires d.f. province), villa crespo (comuna 15 district, buenos aires d.f. province), escobar, general san martin, lomas de zamora, pilar, tres de febrero, la matanza districts (buenos aires province), la rioja province",,4.0
+44,2009,"san antonio de areco, pergamino, salto districts (buenos aires province)",,2.0
+46,2013,"buenos aires city (buenos aires d.f. province), la plata city (la plata district, buenos aires province)",1300000.0,52.0
+49,2014,"buenos aires d.f., buenos aires provinces",,3.0
+51,2015,"santos lugares municipality (tres de febrero district, buenos aires district), mar del plata city (general pueyrredon district, buenos aires district) lujan, san antonio de areco, campana, salto, chacabuco, chivilcoy, pilar, quilmes, la plata, berisso, zarate, mercedes, san andres de giles, pergamino, junin, pila, arrecifes districts (buenos aires province), venado tuerto city (general lopez district, santa fe province)",,3.0
+53,2016,"entre rios, corrientes, santa fe, chaco, formosa, santiago del estero, buenos aires, cardoba provinces",1000000.0,
+54,2016,"pergamino, ramallo, colón, arrecifes, rojas, salto, san nicolás, florentino ameghino, general villegas, baradero, san antonio de areco (buenos aires); jovita (general roca), villa dolores (san javier), la cumbre, la falda, villa giardini (punilla), rio ceballos, salsipuedes, agua de oro, jesús maría, colonia caroya (colon) (córdoba); maria teresa (general lopez), allvarez (rosario) (santa fe) ; la paz, parana (entre rios)",2000.0,
+56,2017,"comodoro rivadavia (escalante - patagonia); santa rosa (canuelas-buenos aires); jujuy, salta, tucumán, santiago del estero, catamarca, san juan, mendoza, córdoba, formosa, misiones, santa fe, la pampa, chubut, santa cruz provinces",,
+58,2018,"lomas de zamora, la matanza, lobos, la plata, arrecifes, marcos paz, lanus (buenos aires province)",,
