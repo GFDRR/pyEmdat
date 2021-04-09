@@ -4,6 +4,15 @@ import os
 
 data = os.getenv('data')
 
+def rebase_CPI(damage_series,base_year=2010):
+    cpi = pd.read_csv(data + '/US_CPI.csv',skiprows=1,index_col='year',squeeze=True)
+    cpi_base_year = cpi.loc[base_year]
+    cpi_multiplier = cpi_base_year / cpi
+    cpi_dict = cpi_multiplier.to_dict()
+    damage_rebased = [int(val * cpi_dict[year]) for year,val in zip(damage_series.index, damage_series.values)]
+    return(damage_rebased)
+
+
 def get_GNI(df):
     '''Takes a dataframe where the columns are country names and the rows are dates. 
     Returns population from the WDI.

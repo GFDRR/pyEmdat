@@ -1,5 +1,6 @@
 import pandas as pd
 import wbdata
+from utils import rebase_CPI
 
 class emdat():
     '''A class used to load, clean and manipulate EMDAT data. 
@@ -24,6 +25,9 @@ class emdat():
              "Disaster Type":"disaster_type",
              "Disaster Subgroup":"disaster_subgroup",
              "Disaster Subtype":"disaster_subtype",
+             "Location":"location",
+             "Latitude":"lat",
+             "Longitude":"lon",
              "Event Name":"event_name",
              "No Injured":"injured",
              "No Affected":"affected",
@@ -33,7 +37,7 @@ class emdat():
              "Insured Damages ('000 US$)":"insured_damages",
              "Total Damages ('000 US$)":"total_damages"}
 
-        self.data = pd.read_excel(filename, header = 6, parse_dates=['Year']).rename(columns = cols_dict)
+        self.data = pd.read_excel(filename, header = 6).rename(columns = cols_dict)
         self.countries = self.data.country.unique()
         self.disaster_types = self.data.disaster_type.unique()
         self.n_events = self.data.dis_no.nunique()
@@ -56,7 +60,7 @@ class emdat():
         if type(disastertype) == str: disastertype = [disastertype]
 
         if min_year and max_year:
-            df = df[(df.year > str(min_year)) & (df.year < str(max_year))]
+            df = df[(df.year > min_year) & (df.year < max_year)]
             
         if countries == ['all'] or not countries:
             pass
@@ -130,7 +134,7 @@ class emdat():
         if type(disastertype) == str: disastertype = [disastertype]
 
         if min_year and max_year:
-            df = df[(df.year > str(min_year)) & (df.year < str(max_year))]
+            df = df[(df.year > min_year) & (df.year < max_year)]
             
         if countries == ['all'] or not countries:
             pass
@@ -165,7 +169,7 @@ class emdat():
         if type(disastertype) == str: disastertype = [disastertype]
 
         if min_year and max_year:
-            df = df[(df.year >   str(min_year)) & (df.year < str(max_year))]
+            df = df[(df.year > min_year) & (df.year < max_year)]
             
         if countries == ['all'] or not countries:
             pass
@@ -201,7 +205,7 @@ class emdat():
         if type(disastertype) == str: disastertype = [disastertype]
 
         if min_year and max_year:
-            df = df[(df.year >   str(min_year)) & (df.year < str(max_year))]
+            df = df[(df.year > min_year) & (df.year < max_year)]
             
         if countries == ['all'] or not countries:
             pass
@@ -237,9 +241,8 @@ class emdat():
         if type(countries) == str: countries = [countries]
         if type(disastertype) == str: disastertype = [disastertype]
 
-
         if min_year and max_year:
-            df = df[(df.year > str(min_year)) & (df.year < str(max_year))]
+            df = df[(df.year > min_year) & (df.year < max_year)]
             
         if countries == ['all'] or not countries:
             pass
@@ -252,6 +255,13 @@ class emdat():
             df = df[df['disaster_type'].isin(disastertype)]
 
         return(df[stats].sum()[0])
+
+    def aal_by_disaster_type(self, min_year, max_year, countries, disastertype, base_year = 2010,damage_type = 'total_damages'):
+        # aal is total loss divided by number of years (but ignore years with no loss)
+        damage_by_hazard_df=self.disaster_stats_timeseries(min_year, max_year, countries, disastertype,stats=damage_type)
+        damage_by_hazard_real = damage_by_hazard_df.apply(rebase_CPI, axis=0, args=[base_year])
+        aal_series = damage_by_hazard_real.sum() / (damage_by_hazard_real.index.max() - damage_by_hazard_real.index.min())
+        return(aal_series.astype(int).sort_values(ascending=False))
 
     def filter_years(self, min_year, max_year):
         '''Filter data by start and end year'''
