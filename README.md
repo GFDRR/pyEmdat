@@ -1,6 +1,6 @@
 # pyEmdat - efficient analysis of natural disaster data
 
-pyEmdat is a library for analysis of the EM-DAT natural disasters dataset. It allows to:
+pyEmdat is a library for analysis of the EM-DAT natural disasters dataset (developed as an in-house tool at GFDRR). It allows to:
 
 * Load and clean EMDAT data
 
